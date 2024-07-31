@@ -2,45 +2,6 @@
 from arquivo_config import *
 from estilo_rich_e_imports import *
 
-'''''
-Aviso:
-    
-    Antes de tudo, esse é um projeto para praticar meus estudos. Nada lá muito grande.
-
-Sobre o Projeto:
-    
-    Esse programa visa ajudar na organização de informações, independente do arquivo, em uma determinada ordem
-    e organização, um padrão de nomeação de arquivos conciso e de fácil entendimento; eu espero. 
-    
-    Obs: Não há nenhuma manipulação, por hora, de arquivos internos na sua máquina, tirando o fato do arquivo .py 
-    de qualidade_img que ainda é um projeto na fase alfa, então fique tranquilo.
-    
-Por que eu fiz?:
-     
-     Inicialmente pensei em algo simples no qual ajudaria na organização dos meus arquivos. Bem, isso tomou uma baita
-     proporção. O que antes era resumido em pouco menos de 100 linhas em um único arquivo, um caos sem dúvidas, hoje
-     não é mais assim.
-     
-Futuro:
-
-    Já penso em fazer uma versão UI Web. O layout está quase pronto, mas claramente isso vai maturar muito por ser
-    algo simples e, novamente, para estudos. Esse mesmo projeto ainda vai sofre muitas alterações.
-     
-Módulos usados e aviso:
-
-    os, time, rich, pyperclip
-
-    Pode ver melhor no arquivo estilo_rich_e_imports. 
-    
-    Caso vá testar/usar recomendo usar meu interpretador Python embutido no projeto, mas fica a sua escolha.
-    
-Sobre:
-
-    Projeto desenvolvido no pycharm por Flavio Azurita. 
-    Interpretador Python: v3.12
-    
-'''''
-
 
 # Definição de limpeza; chamada quando aceitar continuar no programa
 def limpar_f():
