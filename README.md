@@ -29,9 +29,7 @@ algo simples e, novamente, para estudos. Esse mesmo projeto ainda vai sofre muit
 
 os, time, rich, pyperclip
 
-Pode ver melhor no arquivo estilo_rich_e_imports. 
-    
-Caso vá testar/usar recomendo usar meu interpretador Python embutido no projeto, mas fica a sua escolha.
+Pode ver melhor no arquivo estilo_rich_e_imports.
     
 **Sobre:**
 
