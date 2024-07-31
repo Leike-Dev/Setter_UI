@@ -23,18 +23,16 @@ def anima_f(animar: str) -> None:
 
 
 def anima_definir_f() -> None:
+    # Lista para renge animar
+    animar_passos: list[str] = ["Olha que audácia (-_-)", "Tudo bem ^('-')^", "Ô... <('-'<)", "Toma (>'-')>"]
 
     for _ in range(1):
         for animar in animar_passos:
             anima_f(animar)
 
 
-# Lista para renge animar
-animar_passos: list[str] = ["Olha que audácia (-_-)", "Tudo bem ^('-')^", "Ô... <('-'<)", "Toma (>'-')>"]
-
-
 # Funções de construção do nome do arquivo
-def painel_f(arquivo, dono):
+def painel_tipo_arquivo_f(arquivo, dono):
     # Estilos para os parâmetros 'arquivo' e 'autor' na definição nome_autor
     arquivo_estilo: Text = Text(f'{" " * 1}{arquivo}', style=titulo_painel_arq)
     dono_estilo: Text = Text(dono, style='#419ec6')
@@ -127,7 +125,7 @@ def loop_decidir_f(decidir, parte, pedido):
             time.sleep(0.3)
 
 
-def nome_autor_f(autor: str) -> str | None:
+def definir_autor_f(autor: str) -> str | None:
     # Divisoria entre painel e a entrada para o nome do autor
     console.print(' ' * largura)
     time.sleep(0.3)
@@ -145,7 +143,7 @@ def nome_autor_f(autor: str) -> str | None:
     return autor_nome
 
 
-def nome_arquivo_f() -> str:
+def definir_nome_arquivo_f() -> str:
     # Separador - Linha e pedido de inserção do valor solicitado
     console.print('-' * largura, style=linha_separador)
     arquivo: str = input('Digite o nome do arquivo:').strip()
@@ -166,7 +164,7 @@ def nome_arquivo_f() -> str:
     return nome_arquivo
 
 
-def fonte_normal_f(tipo_arquivo: str) -> str:
+def definir_fonte_normal_f(tipo_arquivo: str) -> str:
     # Separador - Linha e pedido de inserção do valor solicitado
     console.print('-' * largura, style=linha_separador)
 
@@ -181,7 +179,7 @@ def fonte_normal_f(tipo_arquivo: str) -> str:
     return fonte
 
 
-def plataforma_normal_f() -> str | None:
+def definir_plataforma_normal_f() -> str | None:
     # Separador - Linha
     console.print('-' * largura, style=linha_separador)
 
@@ -197,7 +195,7 @@ def plataforma_normal_f() -> str | None:
     return plataforma
 
 
-def qualidade_video_f() -> str:
+def definir_qualidade_video_f() -> str:
     # Separador - Linha
     console.print('-' * largura, style=linha_separador)
 
@@ -216,15 +214,15 @@ def qualidade_video_f() -> str:
         11: 'HDTV'      # TV de Alta Definição
     }
 
-    dados = qualidade
+    dados_tabela = qualidade
 
-    titulo_tab = 'Qualidades Disponíveis'
+    titulo_tabela = 'Qualidades Disponíveis'
     coluna_1 = 'Opções'
     coluna_2 = 'Qualidades'
 
     sub_infor = 'Selecione a qualidade:'
 
-    tabela_padrao_f(dados, titulo_tab, coluna_1, coluna_2, sub_infor)
+    tabela_padrao_f(dados_tabela, titulo_tabela, coluna_1, coluna_2, sub_infor)
 
     while True:
         try:
@@ -249,21 +247,21 @@ def qualidade_video_f() -> str:
             time.sleep(0.3)
 
 
-def qualidade_imagem_f() -> str:
+def definir_qualidade_imagem_f() -> str:
     # Separador - Linha
     console.print('-' * largura, style=linha_separador)
 
     resolucao: dict[int, str] = {1: 'SD', 2: 'HD', 3: 'FHD', 4: 'UHD', 5: 'EXQ'}
 
-    dados = resolucao
+    dados_tabela = resolucao
 
-    titulo_tab = 'Qualidades Disponíveis'
+    titulo_tabela = 'Qualidades Disponíveis'
     coluna_1 = 'Opções'
     coluna_2 = 'Qualidades'
 
     sub_infor = 'Selecione a qualidade da imagem:'
 
-    tabela_padrao_f(dados, titulo_tab, coluna_1, coluna_2, sub_infor)
+    tabela_padrao_f(dados_tabela, titulo_tabela, coluna_1, coluna_2, sub_infor)
 
     while True:
         try:
@@ -287,7 +285,7 @@ def qualidade_imagem_f() -> str:
             console.print('-' * largura, style=alertas)
 
 
-def categoria_software_f() -> str:
+def definir_categoria_software_f() -> str:
     # Separador - Linha
     console.print('-' * largura, style=linha_separador)
 
@@ -295,15 +293,15 @@ def categoria_software_f() -> str:
     cat_soft: dict[int, str] = {1: 'Grátis', 2: 'Open-Source', 3: 'Crackeado', 4: 'SO', 5: 'Driver', 6: 'Plugin',
                                 7: 'ROM'}
 
-    dados = cat_soft
+    dados_tabela = cat_soft
 
-    titulo_tab = 'Categorias para Software'
+    titulo_tabela = 'Categorias para Software'
     coluna_1 = 'Opções'
     coluna_2 = 'Categorias'
 
     sub_infor = 'Selecione a categoria:'
 
-    tabela_padrao_f(dados, titulo_tab, coluna_1, coluna_2, sub_infor)
+    tabela_padrao_f(dados_tabela, titulo_tabela, coluna_1, coluna_2, sub_infor)
 
     while True:
         try:
@@ -328,7 +326,7 @@ def categoria_software_f() -> str:
             time.sleep(0.3)
 
 
-def fonte_software_f() -> str:
+def definir_fonte_software_f() -> str:
     # Separador - Linha
     console.print('-' * largura, style=linha_separador)
 
@@ -343,7 +341,7 @@ def fonte_software_f() -> str:
     return fonte_software
 
 
-def plataforma_software_f() -> str:
+def definir_plataforma_software_f() -> str:
     # Separador - Linha
     console.print('-' * largura, style=linha_separador)
 
@@ -351,22 +349,23 @@ def plataforma_software_f() -> str:
 
     plat_pc: dict[int, str] = {1: 'Windows', 2: 'MacOS', 3: 'Linux'}
 
-    dados_tab_1 = plataformas
+    dados_tabela_1 = plataformas
 
-    titulo_tab_1 = 'Plataformas Disponíveis'
+    titulo_tabela_1 = 'Plataformas Disponíveis'
     coluna_1_tab_1 = 'Opções'
     coluna_2_tab_1 = 'Plataformas'
 
     sub_infor_tab_1 = 'Selecione a plataforma do software:'
 
-    dados_tab_2 = plat_pc
-    titulo_tab_2 = 'Sistemas Operacionais'
+    dados_tabela_2 = plat_pc
+
+    titulo_tabela_2 = 'Sistemas Operacionais'
     coluna_1_tab_2 = 'Opções'
     coluna_2_tab_2 = 'Sistemas'
 
     sub_infor_tab_2 = 'Selecione o sistema operacional:'
 
-    tabela_padrao_f(dados_tab_1, titulo_tab_1, coluna_1_tab_1, coluna_2_tab_1, sub_infor_tab_1)
+    tabela_padrao_f(dados_tabela_1, titulo_tabela_1, coluna_1_tab_1, coluna_2_tab_1, sub_infor_tab_1)
 
     # Laço para tratar o valor da escolha feita pelo usuário
     while True:
@@ -380,7 +379,7 @@ def plataforma_software_f() -> str:
                     console.print('-' * largura, style=esmaecido)
                     time.sleep(0.3)
 
-                    tabela_padrao_f(dados_tab_2, titulo_tab_2, coluna_1_tab_2, coluna_2_tab_2, sub_infor_tab_2)
+                    tabela_padrao_f(dados_tabela_2, titulo_tabela_2, coluna_1_tab_2, coluna_2_tab_2, sub_infor_tab_2)
 
                     plat_escolha_pc: int = int(input('Digite a opção:').strip())
 
@@ -411,7 +410,7 @@ def plataforma_software_f() -> str:
             time.sleep(0.3)
 
 
-def versao_software_f() -> str:
+def definir_versao_software_f() -> str:
     # Separador - Linha
     console.print('-' * largura, style=linha_separador)
 
@@ -431,7 +430,7 @@ def versao_software_f() -> str:
     return versao
 
 
-def dados_adicionais_f() -> str:
+def definir_dados_adicionais_f() -> str:
     # Separador - Linha
     console.print('-' * largura, style=linha_separador)
 
@@ -460,15 +459,15 @@ def dados_adicionais_f() -> str:
                                  12: 'Arq. de demonstração', 13: 'Arq. de inteligencia artificial',
                                  14: 'Arq. de desenvolvimento', 0: 'Não desejo adicionar nem uma opção'}
 
-    dados = infor_tab
+    dados_tabela = infor_tab
 
-    titulo_tab = 'Dados Adicionais'
+    titulo_tabela = 'Dados Adicionais'
     coluna_1 = 'Opções'
     coluna_2 = 'Informação'
 
     sub_infor = 'Informações adicionais:'
 
-    tabela_padrao_f(dados, titulo_tab, coluna_1, coluna_2, sub_infor)
+    tabela_padrao_f(dados_tabela, titulo_tabela, coluna_1, coluna_2, sub_infor)
 
     # Lista na qual os valores são armazenados
     opcional_lista: list[str] = []
@@ -568,7 +567,7 @@ def dados_adicionais_f() -> str:
         return '. '.join(opcional_lista)
 
 
-def explicito_f():
+def definir_explicito_f():
     # Separador - Linha
     console.print('-' * largura, style=linha_separador)
 
@@ -598,3 +597,27 @@ def explicito_f():
             console.print('Entrada invalída. Tente novamente', style=alertas)
             console.print('-' * largura, style=alertas)
             time.sleep(0.3)
+
+
+def tabela_padrao_f(dados_tabela, titulo_tabela, coluna_1, coluna_2, sub_infor):
+
+    if sub_infor:
+        print(sub_infor)
+        print(' ' * largura)
+
+    else:
+        print(' ' * largura)
+
+    time.sleep(0.3)
+
+    tabela = Table(title=titulo_tabela, title_justify='center', title_style=assunto_tabela_titulo, box=box.ASCII2,
+                   show_lines=True, min_width=30, style=dim)
+
+    tabela.add_column(coluna_1, justify='center', style=escolha_tabela_1, no_wrap=True, header_style=tabela_titulo)
+    tabela.add_column(coluna_2, justify='left', style=escolha_tabela_2, header_style=tabela_titulo)
+
+    for key, value in dados_tabela.items():
+        tabela.add_row(f'{key}', value)
+
+    console.print(tabela)
+    print(' ' * largura)

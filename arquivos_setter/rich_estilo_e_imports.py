@@ -48,27 +48,3 @@ linha_separador: Style = Style(color='#419ec6', bold=True)
 caixa_intro: Style = Style(color='#419ec6', bold=True)
 painel_arquivo_final: Style = Style(color='#5f75ce', bold=True)
 
-
-# Definição de estilos para quase todas as tabelas do programa -------------------------------------------*
-def tabela_padrao_f(dados, titulo_tab, coluna_1, coluna_2, sub_infor):
-
-    if sub_infor:
-        print(sub_infor)
-        print(' ' * largura)
-
-    else:
-        print(' ' * largura)
-
-    time.sleep(0.3)
-
-    tabela = Table(title=titulo_tab, title_justify='center', title_style=assunto_tabela_titulo, box=box.ASCII2,
-                   show_lines=True, min_width=30, style=dim)
-
-    tabela.add_column(coluna_1, justify='center', style=escolha_tabela_1, no_wrap=True, header_style=tabela_titulo)
-    tabela.add_column(coluna_2, justify='left', style=escolha_tabela_2, header_style=tabela_titulo)
-
-    for key, value in dados.items():
-        tabela.add_row(f'{key}', value)
-
-    console.print(tabela)
-    print(' ' * largura)

@@ -44,15 +44,15 @@ def nome_arquivo_formatado_f(nome_formatado: str) -> None:
 def tabela_escolha_f() -> int:
     opcoes: dict[int, str] = {1: 'Documento', 2: 'Imagem', 3: 'Vídeo', 4: 'Software', 5: 'Furry'}
 
-    dados: dict[int, str] = opcoes
+    dados_tabela: dict[int, str] = opcoes
 
-    titulo_tab: str = 'Tipo de Arquivo'
+    titulo_tabela: str = 'Tipo de Arquivo'
     coluna_1: str = 'Opções'
     coluna_2: str = 'Tipo'
 
     sub_infor: str = ''
 
-    tabela_padrao_f(dados, titulo_tab, coluna_1, coluna_2, sub_infor)
+    tabela_padrao_f(dados_tabela, titulo_tabela, coluna_1, coluna_2, sub_infor)
 
     while True:
         try:

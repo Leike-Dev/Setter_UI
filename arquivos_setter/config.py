@@ -144,43 +144,43 @@ class Arquivo:
             return self.tipo_nome
 
     def painel_infor_c_arquivo(self):
-        self.estilo_autor = painel_f(self.tipo_arquivo, self.tipo_nome)
+        self.estilo_autor = painel_tipo_arquivo_f(self.tipo_arquivo, self.tipo_nome)
 
     def autor_c_arquivo(self):
-        self.autor: str | None = nome_autor_f(self.estilo_autor)
+        self.autor: str | None = definir_autor_f(self.estilo_autor)
 
     def arquivo_c_arquivo(self):
-        self.arquivo: str | None = nome_arquivo_f()
+        self.arquivo: str | None = definir_nome_arquivo_f()
 
     def categoria_soft_c_arquivo(self):
-        self.categoria_software: str | None = categoria_software_f()
+        self.categoria_software: str | None = definir_categoria_software_f()
 
     def qualidade_c_arquivo(self):
-        self.qualidade: str | None = qualidade_video_f()
+        self.qualidade: str | None = definir_qualidade_video_f()
 
     def qualidade_img_c_arquivo(self):
-        self.qualidade_imagem: str | None = qualidade_imagem_f()
+        self.qualidade_imagem: str | None = definir_qualidade_imagem_f()
 
     def release_c_arquivo(self):
-        self.release: str | None = versao_software_f()
+        self.release: str | None = definir_versao_software_f()
 
     def explicito_c_arquivo(self):
-        self.explicito: str | None = explicito_f()
+        self.explicito: str | None = definir_explicito_f()
 
     def fonte_normal_c_arquivo(self):
-        self.fonte_normal: str | None = fonte_normal_f(self.tipo_arquivo)
+        self.fonte_normal: str | None = definir_fonte_normal_f(self.tipo_arquivo)
 
     def plataforma_normal_c_arquivo(self):
-        self.plataforma_normal: str | None = plataforma_normal_f()
+        self.plataforma_normal: str | None = definir_plataforma_normal_f()
 
     def fonte_soft_c_arquivo(self):
-        self.fonte_software: str | None = fonte_software_f()
+        self.fonte_software: str | None = definir_fonte_software_f()
 
     def plataforma_soft_c_arquivo(self):
-        self.plataforma_software: str | None = plataforma_software_f()
+        self.plataforma_software: str | None = definir_plataforma_software_f()
 
     def outras_infor_c_arquivo(self):
-        self.outras_infor: str | None = dados_adicionais_f()
+        self.outras_infor: str | None = definir_dados_adicionais_f()
 
     def documento(self) -> str:
         self.tipo_nome_c_arquivo()
