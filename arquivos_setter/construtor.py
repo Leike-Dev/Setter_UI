@@ -1,7 +1,7 @@
 # Modúlos importados ou arquivos python externos:
 
-from arquivo_config import *
-from estilo_rich_e_imports import *
+from config import *
+from rich_estilo_e_imports import *
 
 
 # Funções para uso da animação

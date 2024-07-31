@@ -1,5 +1,5 @@
 from pathlib import Path
-from estilo_rich_e_imports import *
+from arquivos_setter.rich_estilo_e_imports import *
 import time
 import exiftool
 

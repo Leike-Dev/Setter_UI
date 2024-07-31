@@ -1,6 +1,6 @@
 # Modúlos importados ou arquivos python externos:
-from arquivo_construtor import *
-from estilo_rich_e_imports import *
+from construtor import *
+from rich_estilo_e_imports import *
 
 
 class Renomear:
