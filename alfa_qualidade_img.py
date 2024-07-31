@@ -57,8 +57,6 @@ def obter_metadados(arquivo_imagens) -> tuple[dict[str, str], list[str]]:
         for caminho_arquivo in arquivo_imagens:
             metadata = et.get_metadata(str(caminho_arquivo))
 
-            print(metadata)
-
             if metadata:
 
                 for entrar in metadata:
