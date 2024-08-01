@@ -27,7 +27,7 @@ def nome_arquivo_formatado_f(nome_formatado: str) -> None:
     print('' * largura)
 
     # Tratamento para deixar alinhado dentro do painel
-    formatado: Text = Text(f'{' ' * 1}{nome_formatado}', style=painel_arquivo_final)
+    formatado: Text = Text(f"{' ' * 1}{nome_formatado}", style=painel_arquivo_final)
 
     panel_final: Panel = Panel(title='Nome Gerado', title_align='left', style=painel_arquivo_final, box=box.ASCII2,
                                renderable=formatado, padding=True, highlight=False)

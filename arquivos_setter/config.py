@@ -441,7 +441,7 @@ def painel_furry_f() -> None:
     console.print('-' * largura, '\n')
     time.sleep(0.3)
 
-    arquivo_estilo: Text = Text(f'{" " * 1}{'Antes de prosseguir, escolha o tipo de arquivo furry.'}', style=aviso)
+    arquivo_estilo: Text = Text(f"{' ' * 1}{'Antes de prosseguir, escolha o tipo de arquivo furry.'}", style=aviso)
 
     # Construção do painel de exibição do tipo de arquivo selecionado
     console.print(Panel(title='Atenção', title_align='left', style=aviso, box=box.ASCII2,

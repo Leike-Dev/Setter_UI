@@ -34,7 +34,7 @@ def anima_definir_f() -> None:
 # Funções de construção do nome do arquivo
 def painel_tipo_arquivo_f(arquivo, dono):
     # Estilos para os parâmetros 'arquivo' e 'autor' na definição nome_autor
-    arquivo_estilo: Text = Text(f'{" " * 1}{arquivo}', style=titulo_painel_arq)
+    arquivo_estilo: Text = Text(f"{' ' * 1}{arquivo}", style=titulo_painel_arq)
     dono_estilo: Text = Text(dono, style='#419ec6')
 
     # Separador - Linha entre opções e nome do autor
