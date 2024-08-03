@@ -1,7 +1,9 @@
-from pathlib import Path
-from arquivos_setter.rich_estilo_e_imports import *
 import time
+from pathlib import Path
+
 import exiftool
+
+from arquivos_setter.rich_estilo_e_imports import *
 
 extensoes_imagens = {'.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.webp'}
 
@@ -117,22 +119,22 @@ def tabela_exibir(lista_nome_valor_img, qualidade_pixel) -> None:
                       footer_style=linha_final, max_width=50, min_width=30)
     tabela.add_column('Qualidade', justify='center', style=qualidade_img, no_wrap=True, header_style=tabela_titulo)
 
-    for key, value in lista_nome_valor_img.items():
+    with Live(tabela, auto_refresh=True):
+        for key, value in lista_nome_valor_img.items():
+            q_pixel: int = qualidade_pixel.pop(0) if qualidade_pixel else 0
+            time.sleep(0.4)
+            tabela.add_row(value, key, str(q_pixel))
 
-        q_pixel: int = qualidade_pixel.pop(0) if qualidade_pixel else 0
+        total = str(tabela.row_count)
+        t = Text('Arq. Lidos:', justify='center')
+        n = Text(total, justify='left')
 
-        tabela.add_row(value, key, str(q_pixel))
+        tabela.columns[0].footer = t
+        tabela.columns[1].footer = n
 
-    total = str(tabela.row_count)
-    t = Text('Arq. Lidos:', justify='center')
-    n = Text(total, justify='left')
-
-    tabela.columns[0].footer = t
-    tabela.columns[1].footer = n
-
-    console.print(tabela)
     console.save_html('imagens_qualidade.html')
 
+    time.sleep(0.4)
     console.print('Concluído', style=esmaecido)
 
 

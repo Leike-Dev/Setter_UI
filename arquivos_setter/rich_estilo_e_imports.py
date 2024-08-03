@@ -1,16 +1,9 @@
-from rich.table import Table
-from rich import (box, print)
-from rich.panel import Panel
-from rich.text import Text
 from rich.console import Console
 from rich.layout import Layout
+from rich.live import Live
 from rich.style import Style
 
-import time
-import os
-import pyperclip
-import string
-
+live = Live
 console: Console = Console(record=True)
 largura: int = console.size.width
 layout: Layout = Layout()

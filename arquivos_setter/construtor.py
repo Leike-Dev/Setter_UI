@@ -1,5 +1,4 @@
 # Modúlos importados ou arquivos python externos:
-
 from config import *
 from rich_estilo_e_imports import *
 
@@ -616,8 +615,10 @@ def tabela_padrao_f(dados_tabela, titulo_tabela, coluna_1, coluna_2, sub_infor):
     tabela.add_column(coluna_1, justify='center', style=escolha_tabela_1, no_wrap=True, header_style=tabela_titulo)
     tabela.add_column(coluna_2, justify='left', style=escolha_tabela_2, header_style=tabela_titulo)
 
-    for key, value in dados_tabela.items():
-        tabela.add_row(f'{key}', value)
+    with Live(tabela):
+        for key, value in dados_tabela.items():
+            time.sleep(0.4)
+            tabela.add_row(f'{key}', value)
 
-    console.print(tabela)
     print(' ' * largura)
+    time.sleep(0.4)
