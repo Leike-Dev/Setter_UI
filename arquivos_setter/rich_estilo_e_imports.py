@@ -2,6 +2,15 @@ from rich.console import Console
 from rich.layout import Layout
 from rich.live import Live
 from rich.style import Style
+from rich.table import Table
+from rich.text import Text
+from rich.panel import Panel
+from rich import box
+
+import time
+import os
+import string
+import pyperclip
 
 live = Live
 console: Console = Console(record=True)
