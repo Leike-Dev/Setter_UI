@@ -64,6 +64,7 @@ def loop_decidir_f(decidir, parte, pedido):
             print(' ' * largura)
 
             console.print('Escolha uma opção:', style=escolha_s_n)
+            console.print('0. Sem definição - SDef')
             console.print('1. Deixar o campo vazio.')
             console.print('2. Definir como Undefined.')
             console.print('3. Colocar um valor novamente.')
@@ -72,13 +73,23 @@ def loop_decidir_f(decidir, parte, pedido):
 
             campo_vazio: int = int(input('Escolha:'))
 
-            if campo_vazio == 1:
+            if campo_vazio == 0:
+
+                campo_valor: str = 'SDef'
+
+                console.print(f'Definido como:', campo_valor, style=esmaecido, highlight=False)
+                time.sleep(0.3)
+                return campo_valor
+
+            elif campo_vazio == 1:
                 console.print('Definido como: Vazio', style=esmaecido, highlight=False)
                 time.sleep(0.3)
                 return
 
             elif campo_vazio == 2:
+
                 campo_valor: str = 'Undefined'
+
                 console.print('Definido como:', campo_valor, style=esmaecido, highlight=False)
                 time.sleep(0.3)
                 return campo_valor
@@ -154,6 +165,7 @@ def definir_nome_arquivo_f() -> str:
         console.print('O campo referente ao nome do arquivo não pode ser deixado em branco.', style=aviso)
         console.print('-' * largura, style=aviso)
         time.sleep(0.3)
+
         nome_arquivo: str = input('Digite o nome do arquivo:').strip().title()
 
     # Uma pré-visualização do que foi enviado para o nome do arquivo sendo construído
