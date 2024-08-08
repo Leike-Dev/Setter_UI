@@ -6,7 +6,6 @@ extensoes_imagens = {'.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.webp'}
 
 
 def caminho_f() -> Path:
-
     while True:
         try:
             entrada: str = input('Cole o caminho para a pasta:')
@@ -35,9 +34,8 @@ def caminho_f() -> Path:
             time.sleep(0.3)
 
 
-def listar_arquivos_img(caminho) -> list:
-
-    arquivos_imagens: list = []
+def listar_arquivos_img_f(caminho) -> list:
+    arquivos_imagens: list[str] = []
 
     for arquivo in caminho.iterdir():
 
@@ -47,67 +45,65 @@ def listar_arquivos_img(caminho) -> list:
     return arquivos_imagens
 
 
-def obter_metadados(arquivo_imagens) -> tuple[dict[str, str], list[str]]:
-
+def obter_metadados_f(arquivo_imagens) -> tuple[dict[str, str], list[str]]:
     lista_nome_valor_img: dict[str, str] = {}
     qualidade_pixel: list[str] = []
 
-    with exiftool.ExifToolHelper() as et:
+    nome: str = 'File:FileName'
+    tamanho: str = 'Composite:ImageSize'
+    pixel: str = 'Composite:Megapixels'
+
+    nome_image: str = ''
+    qualidade_image: str = ''
+    megapixel_valor: float = 0
+
+    exif = exiftool.ExifToolHelper()
+
+    with exif as et:
         for caminho_arquivo in arquivo_imagens:
-            metadata = et.get_metadata(str(caminho_arquivo))
 
-            if metadata:
+            metadata = et.get_metadata(caminho_arquivo)
 
-                for entrar in metadata:
+            for entrar in metadata:
+                for tag, valor in entrar.copy().items():
 
-                    nome_image: str = ''
-                    qualidade_image: str = ''
-                    megapixel_valor: float = 0
+                    if tag == nome:
+                        nome_image = valor
 
-                    for tag, value in entrar.items():
+                    if tag == tamanho:
+                        qualidade_image = valor
 
-                        nome = 'File:FileName'
-                        tamanho = 'Composite:ImageSize'
-                        pixel = 'Composite:Megapixels'
+                    if tag == pixel:
+                        megapixel_valor = valor
 
-                        if tag == nome:
-                            nome_image = value
+                if nome_image and qualidade_image:
+                    lista_nome_valor_img.update({nome_image: qualidade_image})
 
-                        if tag == tamanho:
-                            qualidade_image = value
+                if megapixel_valor:
 
-                        if tag == pixel:
-                            megapixel_valor = value
+                    megapixel: float = round(megapixel_valor, 3)
 
-                    if nome_image and qualidade_image:
-                        lista_nome_valor_img.update({nome_image: qualidade_image})
+                    if megapixel < 1:
+                        q_pixel = 'SD'  # Qualidade SD
 
-                    if megapixel_valor:
+                    elif 1 <= megapixel < 2:
+                        q_pixel = 'HD'  # Qualidade HD
 
-                        megapixel: float = round(megapixel_valor, 3)
+                    elif 2 <= megapixel < 6:
+                        q_pixel = 'FHD'  # Qualidade FHD
 
-                        if megapixel < 1:
-                            q_pixel = 'SD'  # Qualidade SD
+                    elif 6 <= megapixel <= 20:
+                        q_pixel = 'UHD'  # Qualidade UHD
 
-                        elif 1 <= megapixel < 2:
-                            q_pixel = 'HD'  # Qualidade HD
+                    else:
+                        q_pixel = 'EXQ'  # Qualidade Extrema EXQ
 
-                        elif 2 <= megapixel < 6:
-                            q_pixel = 'FHD'  # Qualidade FHD
-
-                        elif 6 <= megapixel <= 20:
-                            q_pixel = 'UHD'  # Qualidade UHD
-
-                        else:
-                            q_pixel = 'EXQ'  # Qualidade Extrema EXQ
-
-                        qualidade_pixel.append(q_pixel)
+                    qualidade_pixel.append(q_pixel)
 
     return lista_nome_valor_img, qualidade_pixel
 
 
-def tabela_exibir(lista_nome_valor_img, qualidade_pixel) -> None:
-
+def tabela_exibir_f(lista_nome_valor_img, qualidade_pixel) -> None:
     tabela: Table = Table(title='Informações', title_style=assunto_tabela_titulo, title_justify='center',
                           box=box.ASCII2, show_lines=True, border_style=dim, show_footer=True, footer_style=aviso)
 
@@ -117,21 +113,18 @@ def tabela_exibir(lista_nome_valor_img, qualidade_pixel) -> None:
     tabela.add_column('Qualidade', justify='center', style=qualidade_img, no_wrap=True, header_style=tabela_titulo)
 
     with Live(tabela, auto_refresh=True):
-        for key, value in lista_nome_valor_img.items():
+        for chave, valor in lista_nome_valor_img.items():
             q_pixel: int = qualidade_pixel.pop(0) if qualidade_pixel else 0
+            time.sleep(0.3)
+            tabela.add_row(valor, chave, str(q_pixel))
 
-            time.sleep(0.4)
+        total_arquivos = str(tabela.row_count)
 
-            tabela.add_row(value, key, str(q_pixel))
+        arquivo = Text('Arq. Lidos:', justify='center')
+        total = Text(total_arquivos, justify='left')
 
-        total = str(tabela.row_count)
-        t = Text('Arq. Lidos:', justify='center')
-        n = Text(total, justify='left')
-
-        tabela.columns[0].footer = t
-        tabela.columns[1].footer = n
-
-    console.save_html('imagens_qualidade.html')
+        tabela.columns[0].footer = arquivo
+        tabela.columns[1].footer = total
 
     time.sleep(0.4)
     console.print('Concluído', style=esmaecido)
@@ -149,13 +142,13 @@ def main() -> None:
     caminho = caminho_f()
 
     # Passando o caminho para lista_arquivos_img obtém-se uma lista com arquivos de imagem
-    arquivos_imagens = listar_arquivos_img(caminho)
+    arquivos_imagens = listar_arquivos_img_f(caminho)
 
     # A função obter_metadados pega todos os dados dos arquivos de imagem e retorna um diciónario e uma lista
-    lista_nome_valor_img, qualidade_pixel = obter_metadados(arquivos_imagens)
+    lista_nome_valor_img, qualidade_pixel = obter_metadados_f(arquivos_imagens)
 
     # Ao final do processo, tabela_exibir recebe os respectivos valores e os imprime de forma clara ao usuário
-    tabela_exibir(lista_nome_valor_img, qualidade_pixel)
+    tabela_exibir_f(lista_nome_valor_img, qualidade_pixel)
 
 
 if __name__ == '__main__':

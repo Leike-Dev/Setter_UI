@@ -5,7 +5,6 @@ from rich_estilo_e_imports import *
 
 # Funções para uso da animação
 def limpa_anima_f() -> None:
-
     if os.name == 'nt':
         _ = os.system('cls')
     else:
@@ -48,7 +47,6 @@ def painel_tipo_arquivo_f(arquivo, dono):
 
 
 def loop_decidir_f(decidir, parte, pedido):
-
     if decidir:
         console.print('Definido como:', decidir, style=esmaecido, highlight=False)
         time.sleep(0.3)
@@ -125,7 +123,7 @@ def loop_decidir_f(decidir, parte, pedido):
 
 
 def definir_autor_f(autor: str) -> str | None:
-    # Divisoria entre painel e a entrada para o nome do autor
+    # Divisor entre painel e a entrada para o nome do autor
     console.print(' ' * largura)
     time.sleep(0.3)
 
@@ -147,7 +145,7 @@ def definir_nome_arquivo_f() -> str:
     console.print('-' * largura, style=linha_separador)
     arquivo: str = input('Digite o nome do arquivo:').strip()
 
-    nome_arquivo = string.capwords(arquivo)     # TODO: Aplicar as entradas depois
+    nome_arquivo = string.capwords(arquivo)  # TODO: Aplicar as entradas depois
 
     # Primeiro laço: Impede que o nome do arquivo fique vago
     while not nome_arquivo:
@@ -599,7 +597,6 @@ def definir_explicito_f():
 
 
 def tabela_padrao_f(dados_tabela, titulo_tabela, coluna_1, coluna_2, sub_infor):
-
     if sub_infor:
         print(sub_infor)
         print(' ' * largura)
