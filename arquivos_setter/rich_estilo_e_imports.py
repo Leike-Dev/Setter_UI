@@ -13,7 +13,7 @@ import string
 import pyperclip
 
 live = Live
-console: Console = Console(record=True)
+console: Console = Console()
 largura: int = console.size.width
 layout: Layout = Layout()
 
@@ -49,4 +49,3 @@ linha_separador: Style = Style(color='#419ec6', bold=True)
 # Definição de estilos do rich - Principal ---------------------------------------------------------------*
 caixa_intro: Style = Style(color='#419ec6', bold=True)
 painel_arquivo_final: Style = Style(color='#5f75ce', bold=True)
-
